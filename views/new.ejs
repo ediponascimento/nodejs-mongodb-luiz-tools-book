@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <title>Crud Clientes | Cadastrar</title>
+</head>
+<body>
+  <h1><%= title %></h1>
+  <p>Preenhcer os dados abaixo para salvar o cliente</p>
+  <form action="<%= action%>" method="POST">
+    <p>
+      <label for="nome">Nome:</label>
+      <input type="text" name="name">
+    </p>
+    <p>
+      <label for="idade">Idade:</label>
+      <input type="number" name="idade">
+    </p>
+    <p>
+      <label for="uf">UF</label>
+      <select name="uf" id="uf">
+        <option value="">RS</option>
+        <option value="">SC</option>
+        <option value="">PR</option>
+      </select>
+    </p>
+    <a href="/">Cancelar</a> | <input type="submit" value="Salvar">
+  </form>
+</body>
+</html>
