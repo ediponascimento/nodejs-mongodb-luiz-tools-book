@@ -1,34 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <meta charset="UTF-8" />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Clientes já cadastrados no sistema.</p>
-    <table width="50%">
-      <thead>
-        <tr style="background-color: #ccc">
-          <td style="width: 50%">Nome</td>
-          <td style="width: 15%">Idade</td>
-          <td style="width: 15%">UF</td>
-          <td>Ações</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td colspan="4">Nenhum cliente cadastrado.</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="4">
-            <a href="/new">Cadastrar Novo</a>
-          </td>
-        </tr>
-      </tfoot>
-    </table>
-  </body>
+
+<head>
+  <title>Listagem de clientes</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+  <h1>Listagem de clientes</h1>
+  <p>Clientes já cadastrados no sistema.</p>
+  <table width="50%">
+    <thead>
+      <tr style="background-color: #ccc">
+        <td style="width: 50%">Nome</td>
+        <td style="width: 15%">Idade</td>
+        <td style="width: 15%">UF</td>
+        <td>Ações</td>
+      </tr>
+    </thead>
+    <tbody>
+      <%if(!docs || docs.length ==0) { %>
+      <tr>
+        <td colspan="4">Nenhum cliente cadastrado.</td>
+      </tr>
+      <%} else { 
+          docs.forEach(customer => { %>
+      <tr>
+        <td style="width:50%"><%=customer.nome%></td>
+        <td style="width:15%"><%=customer.idade%></td>
+        <td style="width:15%"><%=customer.uf%></td>
+        <td>
+          <a href="/edit/<%=customer._id%>">Editar</a>
+          <a href="/delete/<%=customer._id%>"onclick=" return confirm('tem ceteza?')">Delete</a> 
+        </td>
+      </tr>
+      <%})
+        }%>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4">
+          <a href="/new">Cadastrar Novo</a>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</body>
+
 </html>
